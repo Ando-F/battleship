@@ -1,0 +1,10 @@
+.hello {
+    color: red;
+}
+
+.cell {
+    width: 10px;
+    height: 10px;
+    background-color: aquamarine;
+    border: 1px solid;
+}
