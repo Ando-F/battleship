@@ -1,5 +1,6 @@
 import {Gameboard} from "./factories";
-import {changeAxis, changeColorOnHover, displayBoard} from "./dom";
+import {changeAxis, displayBoard, colorChanger} from "./dom";
+import {clearBox} from "./help-functions";
 import './style.css';
 
 //display player's board
@@ -12,11 +13,23 @@ const enemygameBoardContainer = document.getElementById("enemy-game-board");
 const enemyBoard = Gameboard();
 displayBoard(enemyBoard.board, enemygameBoardContainer, 'enemy-board');
 
-//change cell's color on mouse hover
-const gameBoardCells = document.querySelectorAll('.my-board');
-gameBoardCells.forEach((cell) => {
-	changeColorOnHover(cell, 'mouseover', 'yellow');
-	changeColorOnHover(cell, 'mouseout', 'white');
-})
+colorChanger();
 
+//now we can change axis value by clicking
 changeAxis();
+
+const updateMyBoard = () => {
+	clearBox(gameBoardContainer);
+	displayBoard(firstGameBoard.board, gameBoardContainer, 'my-board');
+	colorChanger();
+}
+
+const updateEnemyBoard = () => {
+	clearBox(enemygameBoardContainer);
+	displayBoard(enemyBoard.board, enemygameBoardContainer, 'enemy-board');
+}
+
+//placing ships on my board
+const axisValue = document.getElementById('axis-value').innerHTML;
+firstGameBoard.placeShip(4, {value: axisValue}, {x: 1, y: 1});
+updateMyBoard();

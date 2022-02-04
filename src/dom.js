@@ -11,14 +11,24 @@ const displayBoard = (board, container, uniqueClass) => {
 	}
 };
 
+//change cell's color on mouse hover
 const changeColorOnHover = (element, listener, color) => {
 	element.addEventListener(listener, () => {
 		element.style.background = color;
 	});
 };
 
+const gameBoardCells = document.querySelectorAll('.my-board');
+const colorChanger = () => {
+	gameBoardCells.forEach((cell) => {
+		// getCoordinates(cell);
+		changeColorOnHover(cell, 'mouseover', 'yellow');
+		changeColorOnHover(cell, 'mouseout', 'white');
+	})
+}
+
 const changeAxis = () => {
-	let clickCount = 0;
+	let clickCount = 1;
 
 	const axisContainer = document.getElementById('axis');
 	const axisValue = document.getElementById('axis-value');
@@ -32,8 +42,15 @@ const changeAxis = () => {
 	});
 };
 
+// const getCoordinates = (element) => {
+// 	element.addEventListener('click', (e) => {
+// 		console.log(e.target.id);
+// 	})
+// };
+
 export {
 	displayBoard,
 	changeColorOnHover,
-	changeAxis
+	changeAxis,
+	colorChanger,
 }
