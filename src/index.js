@@ -1,5 +1,5 @@
 import {Gameboard} from "./factories";
-import {changeColorOnHover, displayBoard} from "./dom";
+import {changeAxis, changeColorOnHover, displayBoard} from "./dom";
 import './style.css';
 
 //display player's board
@@ -12,8 +12,11 @@ const enemygameBoardContainer = document.getElementById("enemy-game-board");
 const enemyBoard = Gameboard();
 displayBoard(enemyBoard.board, enemygameBoardContainer, 'enemy-board');
 
+//change cell's color on mouse hover
 const gameBoardCells = document.querySelectorAll('.my-board');
 gameBoardCells.forEach((cell) => {
 	changeColorOnHover(cell, 'mouseover', 'yellow');
 	changeColorOnHover(cell, 'mouseout', 'white');
 })
+
+changeAxis();

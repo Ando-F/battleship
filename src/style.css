@@ -49,6 +49,16 @@ body {
     align-items: center;
 }
 
+/*Axis block editing*/
 #axis {
-    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+
+    cursor: pointer;
+}
+
+#axis-name {
+    margin-right: 20px;
 }
