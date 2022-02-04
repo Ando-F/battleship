@@ -7,10 +7,19 @@
     "test": "jest",
     "build": "webpack"
   },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "babel-loader": "^8.2.3",
     "css-loader": "^6.5.1",
+    "jest": "^27.4.7",
+    "jest-webpack": "^0.5.1",
     "style-loader": "^3.3.1",
     "webpack": "^5.67.0",
     "webpack-cli": "^4.9.2"
