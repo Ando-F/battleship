@@ -1,4 +1,4 @@
-import {Gameboard} from "./Gameboard";
+import {Gameboard} from "../src/Gameboard";
 
 test('is the board right', () => {
 	const firstGameboard = Gameboard();
@@ -102,11 +102,4 @@ test('same test two ships, must be off', () => {
 	gameBoard.placeShip(1, {value: 'x'}, {x: 5, y: 5});
 	gameBoard.recieveAttack({x: 1, y: 1});
 	expect(gameBoard.gameStatus.status).toBe('on');
-});
-
-test('place ship with random coordinates', () => {
-	const gameBoard = Gameboard();
-	const computer = Player();
-	gameBoard.placeShip(1, {value: 'x'}, computer.calculateCoordinatesForAI());
-	expect(gameBoard.ships.length).toBe(1);
 });

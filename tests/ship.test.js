@@ -1,4 +1,4 @@
-import {Ship} from "./Ship";
+import {Ship} from "../src/Ship";
 
 //testing Ship factory function
 test('hit four deck ship', () => {
