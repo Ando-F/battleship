@@ -1,33 +1,4 @@
-const Ship = (length, axis, coordinates) => {
-	let injuredDecks = {value: 0};
-
-	let coordinatesOnBoard = {};
-	coordinatesOnBoard[0] = coordinates;
-	if (axis.value === 'x' && length > 1) {
-		for (let i = 1; i <= length; i++) {
-			coordinatesOnBoard[i] = {x: coordinates.x + i, y: coordinates.y};
-		}
-	} else if (axis.value === 'y' && length > 1) {
-		for (let i = 1; i <= length; i++) {
-			coordinatesOnBoard[i] = {x: coordinates.x, y: coordinates.y + i};
-		}
-	}
-
-	let sunkStatus = {value: false};
-
-	const hit = () => {
-		injuredDecks.value += 1;
-		isSunk();
-	}
-
-	const isSunk = () => {
-		if (injuredDecks.value === length) {
-			sunkStatus.value = true;
-		}
-	};
-
-	return {length, injuredDecks, coordinatesOnBoard,sunkStatus, hit, isSunk};
-};
+import {Ship} from "./Ship";
 
 const Gameboard = () => {
 	//an array to store all the created ships
@@ -89,27 +60,6 @@ const Gameboard = () => {
 	return {board, ships, placeShip, recieveAttack, gameStatus};
 };
 
-const Player = () => {
-	let xArray = Array.from(Array(10).keys());
-	let yArray = Array.from(Array(10).keys());
-
-	const calculateCoordinatesForAI = () => {
-		let x = xArray[Math.floor(Math.random()*xArray.length)];
-		let indexOfX = xArray.indexOf(x);
-		xArray.splice(indexOfX, 1);
-
-		let y = yArray[Math.floor(Math.random()*yArray.length)];
-		let indexOfY = yArray.indexOf(y);
-		yArray.splice(indexOfY, 1);
-
-		return {x: x, y: y};
-	};
-
-	return {calculateCoordinatesForAI};
-}
-
 export {
-	Ship,
-	Gameboard,
-	Player
+	Gameboard
 }

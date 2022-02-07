@@ -11,9 +11,17 @@ const displayBoard = (board, container, uniqueClass) => {
 			oneCell.innerHTML = board[i][j];
 			oneCell.id = (i * 10) + j;
 			container.appendChild(oneCell);
+
+			colorCells(oneCell);
 		}
 	}
 };
+
+const colorCells = (cell) => {
+	if (cell.innerHTML === '1') {
+		cell.style.background = 'lightblue';
+	}
+}
 
 export {
 	displayBoard,
