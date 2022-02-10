@@ -35,3 +35,14 @@ test('create right array (y)', () => {
 	computer.fillArray(2, 'x');
 	expect(computer.yArray).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 })
+
+test('remove occupied numbers from arrays', () => {
+	const gameBoard = Gameboard();
+	const computer = Player();
+
+	gameBoard.placeShip(2, {value: 'x'}, {x: 1, y: 2});
+	computer.fillArray(2, 'x');
+	computer.checkBoard(gameBoard.board);
+	computer.cleanArray(computer.xArray, computer.numbersX);
+	expect(computer.xArray).toEqual([0, 3, 4, 5, 6, 7]);
+})

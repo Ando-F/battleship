@@ -46,16 +46,21 @@ const Player = () => {
 		}
 	}
 
+	const cleanArray = (arrayToClean, arrayToRead) => {
+		for (let i = 0; i < arrayToClean.length; i++) {
+			for (let j = 0; j < arrayToRead.length; j++) {
+				if (arrayToClean[i] === arrayToRead[j]) {
+					arrayToClean.splice(i, 1);
+				}
+			}
+		}
+	}
+
 	const randomCoordinates = (length, axis) => {
 		fillArray(length, axis);
 
 		let x = xArray[Math.floor(Math.random()*xArray.length)];
-		let indexOfX = xArray.indexOf(x);
-		xArray.splice(indexOfX, 1);
-
 		let y = yArray[Math.floor(Math.random()*yArray.length)];
-		let indexOfY = yArray.indexOf(y);
-		yArray.splice(indexOfY, 1);
 
 		return {x: x, y: y};
 	};
@@ -69,8 +74,8 @@ const Player = () => {
 			return 'y';
 		}
 	}
-
-	return {randomAxis, randomCoordinates, checkBoard, fillArray, xArray, yArray, numbersY, numbersX};
+	//we export fillArray and checkBoard for tests – we need the locally only (the same with arrays)
+	return {randomAxis, randomCoordinates, checkBoard, fillArray, cleanArray, xArray, yArray, numbersY, numbersX};
 }
 
 export {
