@@ -23,3 +23,15 @@ test('can we check gameboard – numbersY have the all same numbers', () => {
 	computer.checkBoard(gameboard.board);
 	expect(computer.numbersY[1]).toBe(2);
 })
+
+test('create right array', () => {
+	const computer = Player();
+	computer.fillArray(2, 'x');
+	expect(computer.xArray).toEqual([0, 1, 2, 3, 4, 5, 6, 7]);
+})
+
+test('create right array (y)', () => {
+	const computer = Player();
+	computer.fillArray(2, 'x');
+	expect(computer.yArray).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+})

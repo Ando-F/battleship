@@ -38,9 +38,11 @@ updateBoard(gameBoardContainer, firstGameBoard.board, 'my-board');
 
 //place enemy ships on enemy board
 const enemy = Player();
+
 const axis = enemy.randomAxis();
 enemyBoard.placeShip(4, {value: axis}, enemy.randomCoordinates(4, axis));
-console.log(enemy.xArray, enemy.yArray);
+
 const axis1 = enemy.randomAxis();
 enemyBoard.placeShip(3, {value: axis1}, enemy.randomCoordinates(4, axis1));
+
 updateBoard(enemyGameBoardContainer, enemyBoard.board, 'enemy-board');
