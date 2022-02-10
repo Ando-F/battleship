@@ -56,9 +56,7 @@ const Player = () => {
 		}
 	}
 
-	const randomCoordinates = (length, axis) => {
-		fillArray(length, axis);
-
+	const randomCoordinates = () => {
 		let x = xArray[Math.floor(Math.random()*xArray.length)];
 		let y = yArray[Math.floor(Math.random()*yArray.length)];
 

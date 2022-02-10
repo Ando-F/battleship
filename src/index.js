@@ -40,9 +40,18 @@ updateBoard(gameBoardContainer, firstGameBoard.board, 'my-board');
 const enemy = Player();
 
 const axis = enemy.randomAxis();
-enemyBoard.placeShip(4, {value: axis}, enemy.randomCoordinates(4, axis));
+enemy.fillArray(4, axis);
+enemyBoard.placeShip(4, {value: axis}, enemy.randomCoordinates());
+enemy.checkBoard(enemyBoard.board);
+enemy.cleanArray(enemy.xArray, enemy.numbersX);
+enemy.cleanArray(enemy.yArray, enemy.numbersY);
 
 const axis1 = enemy.randomAxis();
-enemyBoard.placeShip(3, {value: axis1}, enemy.randomCoordinates(4, axis1));
+enemy.fillArray(3, axis1);
+enemyBoard.placeShip(3, {value: axis1}, enemy.randomCoordinates());
+enemy.checkBoard(enemyBoard.board);
+enemy.cleanArray(enemy.xArray, enemy.numbersX);
+enemy.cleanArray(enemy.yArray, enemy.numbersY);
+
 
 updateBoard(enemyGameBoardContainer, enemyBoard.board, 'enemy-board');
