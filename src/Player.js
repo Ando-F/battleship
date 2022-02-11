@@ -1,12 +1,17 @@
+import {Gameboard} from "./Gameboard";
+
 const Player = () => {
-	let xArray = [];
-	let yArray = [];
+	let xArray;
+	let yArray;
 
 	let numbersX = [];
 	let numbersY = [];
 
 	//filling array with right amount of numbers
 	const fillArray = (length, axis) => {
+		xArray = [];
+		yArray = [];
+
 		const createArray = (array, length) => {
 			for (let i = 0; i < length; i++) {
 				array.push(i);
@@ -15,11 +20,11 @@ const Player = () => {
 
 		const arrayOptions = (length, axis) => {
 			if (axis === 'x') {
-				createArray(xArray, 10 - length);
+				createArray(xArray, 10 - length + 1);
 				createArray(yArray, 10);
 			} else if (axis === 'y') {
 				createArray(xArray, 10);
-				createArray(yArray, 10 - length)
+				createArray(yArray, 10 - length + 1)
 			}
 		}
 
@@ -33,6 +38,9 @@ const Player = () => {
 		} else if (length === 4) {
 			arrayOptions(4, axis);
 		}
+
+		console.log('original X', xArray);
+		console.log('original Y', yArray);
 	}
 
 	const checkBoard = (board) => {
@@ -57,23 +65,35 @@ const Player = () => {
 	}
 
 	const randomCoordinates = () => {
-		let x = xArray[Math.floor(Math.random()*xArray.length)];
-		let y = yArray[Math.floor(Math.random()*yArray.length)];
+		let x = xArray[Math.floor(Math.random() * xArray.length)];
+		let y = yArray[Math.floor(Math.random() * yArray.length)];
 
 		return {x: x, y: y};
 	};
 
-	const randomAxis = () => {
-		let randomNumber = Math.floor(Math.random() * (2 - 1 + 1) + 1);
+	const refactorArrays = (board) => {
+		checkBoard(board);
+		cleanArray(xArray, numbersX);
+		cleanArray(yArray, numbersY);
 
-		if (randomNumber === 1) {
+		console.log('numbers X: ', numbersX);
+		console.log('numbers Y: ', numbersY);
+
+		console.log('refactored X: ', xArray);
+		console.log('refactored Y: ', yArray);
+	}
+
+	const randomAxis = () => {
+		let randomNumber = Math.floor(Math.random() * 2);
+
+		if (randomNumber === 0) {
 			return 'x';
 		} else {
 			return 'y';
 		}
 	}
 	//we export fillArray and checkBoard for tests – we need the locally only (the same with arrays)
-	return {randomAxis, randomCoordinates, checkBoard, fillArray, cleanArray, xArray, yArray, numbersY, numbersX};
+	return {randomAxis, randomCoordinates, checkBoard, fillArray, cleanArray, refactorArrays, xArray, yArray, numbersY, numbersX};
 }
 
 export {

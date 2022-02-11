@@ -38,20 +38,15 @@ updateBoard(gameBoardContainer, firstGameBoard.board, 'my-board');
 
 //place enemy ships on enemy board
 const enemy = Player();
-
-const axis = enemy.randomAxis();
-enemy.fillArray(4, axis);
-enemyBoard.placeShip(4, {value: axis}, enemy.randomCoordinates());
-enemy.checkBoard(enemyBoard.board);
-enemy.cleanArray(enemy.xArray, enemy.numbersX);
-enemy.cleanArray(enemy.yArray, enemy.numbersY);
-
-const axis1 = enemy.randomAxis();
-enemy.fillArray(3, axis1);
-enemyBoard.placeShip(3, {value: axis1}, enemy.randomCoordinates());
-enemy.checkBoard(enemyBoard.board);
-enemy.cleanArray(enemy.xArray, enemy.numbersX);
-enemy.cleanArray(enemy.yArray, enemy.numbersY);
-
+const placeRandomShip = (length, axis) => {
+	enemy.fillArray(length, axis);
+	enemy.refactorArrays(enemyBoard.board);
+	enemyBoard.placeShip(length, {value: axis}, enemy.randomCoordinates());
+}
+placeRandomShip(4, enemy.randomAxis());
+placeRandomShip(3, enemy.randomAxis());
+placeRandomShip(3, enemy.randomAxis());
+placeRandomShip(2, enemy.randomAxis());
+placeRandomShip(2, enemy.randomAxis());
 
 updateBoard(enemyGameBoardContainer, enemyBoard.board, 'enemy-board');
