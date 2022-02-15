@@ -9,7 +9,14 @@ const updateBoard = (container, board, elementClass) => {
 	displayBoard(board, container, elementClass);
 }
 
+const clearCells = (cells, board) => {
+	cells.forEach((cell) => {
+		cell.innerHTML = "";
+	})
+}
+
 export {
 	clearBox,
-	updateBoard
+	updateBoard,
+	clearCells
 }

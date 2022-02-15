@@ -1,8 +1,8 @@
 //getting board containers from the DOM
-import {updateBoard} from "./help-functions";
+import {updateBoard, clearCells} from "./help-functions";
 
 import {enemyBoard, firstGameBoard} from "./index";
-import {properCoordinates} from "./AI";
+import {randomCoordinates} from "./AI";
 
 const gameBoardContainer = document.getElementById("game-board");
 const enemyGameBoardContainer = document.getElementById("enemy-game-board");
@@ -33,9 +33,8 @@ const attackByClick = (cell) => {
 		let y = e.target.id % 10;
 
 		enemyBoard.recieveAttack({x: x, y: y});
-		firstGameBoard.recieveAttack(properCoordinates(firstGameBoard.board));
-		updateBoard(enemyGameBoardContainer, enemyBoard.board, 'enemy-board');
-		updateBoard(gameBoardContainer, firstGameBoard.board, 'my-board');
+		clearCells(document.querySelectorAll('.enemy-board'), enemyBoard.board);
+		// updateBoard(enemyGameBoardContainer, enemyBoard.board, 'enemy-board');
 	})
 }
 

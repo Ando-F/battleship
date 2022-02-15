@@ -18,4 +18,4 @@ const properCoordinates = (board) => {
     return coordinates;
 }
 
-export {checkCoordinates, properCoordinates}
+export {randomCoordinates, checkCoordinates, properCoordinates}
