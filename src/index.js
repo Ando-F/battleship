@@ -51,4 +51,4 @@ enemyBoard.placeShip(1, {value: 'y'}, {x: 9, y: 0});
 
 updateBoard(enemyGameBoardContainer, enemyBoard.board, 'enemy-board');
 
-export {enemyBoard}
+export {enemyBoard, firstGameBoard}
