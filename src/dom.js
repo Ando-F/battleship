@@ -1,4 +1,8 @@
 //getting board containers from the DOM
+import {updateBoard} from "./help-functions";
+
+import {enemyBoard} from "./index";
+
 const gameBoardContainer = document.getElementById("game-board");
 const enemyGameBoardContainer = document.getElementById("enemy-game-board");
 
@@ -15,11 +19,28 @@ const displayBoard = (board, container, uniqueClass) => {
 			colorCells(oneCell);
 		}
 	}
+
+	document.querySelectorAll('.enemy-board').forEach((cell) => {
+		attackByClick(cell);
+	})
 };
+
+const attackByClick = (cell) => {
+	//event listeners for attacks
+	cell.addEventListener('click', (e) => {
+		let x = Math.floor(e.target.id / 10);
+		let y = e.target.id % 10;
+
+		enemyBoard.recieveAttack({x: x, y: y});
+		updateBoard(enemyGameBoardContainer, enemyBoard.board, 'enemy-board');
+	})
+}
 
 const colorCells = (cell) => {
 	if (cell.innerHTML === '1') {
 		cell.style.background = 'lightblue';
+	} else if (cell.innerHTML === '2') {
+		cell.style.background = 'red';
 	}
 }
 

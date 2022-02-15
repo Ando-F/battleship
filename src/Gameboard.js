@@ -41,7 +41,7 @@ const Gameboard = () => {
 				}
 			}
 			checkGameStatus();
-		} else {
+		} else if (board[coordinates.x][coordinates.y] === 0) {
 			board[coordinates.x][coordinates.y] = 3;
 		}
 	};
