@@ -1,6 +1,4 @@
-//getting board containers from the DOM
-import {updateBoard, clearCells} from "./help-functions";
-
+import {updateBoard} from "./help-functions";
 import {enemyBoard, firstGameBoard} from "./index";
 import {returnRandomCoordinates} from "./AI";
 
@@ -13,20 +11,29 @@ const displayBoard = (board, container, uniqueClass) => {
 			const oneCell = document.createElement('div');
 			oneCell.classList.add('cell');
 			oneCell.classList.add(uniqueClass);
-			oneCell.innerHTML = board[i][j];
 			oneCell.id = (i * 10) + j;
-			container.appendChild(oneCell);
 
-			colorCells(oneCell);
+			// adding colors to cell background
+			if (board[i][j] === 1) {
+				oneCell.style.background = 'lightblue';
+			} else if (board[i][j] === 2) {
+				oneCell.style.background = 'red';
+			} else if (board[i][j] === 3) {
+				oneCell.style.background = 'lightgreen';
+			}
+
+			container.appendChild(oneCell);
 		}
 	}
 };
 
 // adding event listeners to all cells using Event Delegation
 enemyGameBoardContainer.addEventListener('click', (e) => {
-	if (e.target && e.target.nodeName === 'DIV') {
+	if (e.target && e.target.nodeName === 'DIV' && !(e.target.classList.contains('clicked'))) {
 		let x = Math.floor(e.target.id / 10);
 		let y = e.target.id % 10;
+
+		e.target.classList.add('clicked');
 
 		enemyBoard.recieveAttack({x: x, y: y});
 		updateBoard(enemyGameBoardContainer, enemyBoard.board, 'enemy-board');
@@ -35,14 +42,6 @@ enemyGameBoardContainer.addEventListener('click', (e) => {
 		updateBoard(gameBoardContainer, firstGameBoard.board, 'my-board');
 	}
 })
-
-const colorCells = (cell) => {
-	if (cell.innerHTML === '1') {
-		cell.style.background = 'lightblue';
-	} else if (cell.innerHTML === '2') {
-		cell.style.background = 'red';
-	}
-}
 
 export {
 	displayBoard,
