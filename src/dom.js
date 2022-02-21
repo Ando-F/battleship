@@ -20,23 +20,18 @@ const displayBoard = (board, container, uniqueClass) => {
 			colorCells(oneCell);
 		}
 	}
-
-	document.querySelectorAll('.enemy-board').forEach((cell) => {
-		attackByClick(cell);
-	})
 };
 
-const attackByClick = (cell) => {
-	//event listeners for attacks
-	cell.addEventListener('click', (e) => {
+// adding event listeners to all cells using Event Delegation
+enemyGameBoardContainer.addEventListener('click', (e) => {
+	if (e.target && e.target.nodeName === 'DIV') {
 		let x = Math.floor(e.target.id / 10);
 		let y = e.target.id % 10;
 
 		enemyBoard.recieveAttack({x: x, y: y});
-		clearCells(document.querySelectorAll('.enemy-board'), enemyBoard.board);
-		// updateBoard(enemyGameBoardContainer, enemyBoard.board, 'enemy-board');
-	})
-}
+		updateBoard(enemyGameBoardContainer, enemyBoard.board, 'enemy-board');
+	}
+})
 
 const colorCells = (cell) => {
 	if (cell.innerHTML === '1') {
