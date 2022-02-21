@@ -1,21 +1,24 @@
-const randomCoordinates = () => {
-    return {x: Math.floor(Math.random() * 10) + 1, y: Math.floor(Math.random() * 10) + 1};
+let randomCoordinates = [];
+
+// create array with all numbers we need
+for (let i = 0; i < 100; i++) {
+    randomCoordinates.push(i);
 }
 
-const checkCoordinates = (coordinates, board) => {
-    if (board[coordinates.x][coordinates.y] === 1 || board[coordinates.x][coordinates.y] === 0) {
-        return true;
-    } else {
-        return false;
-    }
+// shuffle array
+for (let j = 100 - 1; j >= 0; j--) {
+    let swapIndex = Math.floor(Math.random() * j);
+    let tmp = randomCoordinates[swapIndex];
+    randomCoordinates[swapIndex] = randomCoordinates[j];
+    randomCoordinates[j] = tmp;
 }
 
-const properCoordinates = (board) => {
-    let coordinates = randomCoordinates();
-    while (checkCoordinates(coordinates, board) !== true) {
-        coordinates = randomCoordinates();
-    }
-    return coordinates;
-}
 
-export {randomCoordinates, checkCoordinates, properCoordinates}
+const returnRandomCoordinates = () => {
+    let x = Math.floor(randomCoordinates[0] / 10);
+    let y = randomCoordinates[0] % 10;
+    randomCoordinates.shift();
+    console.log({x: x, y: y});
+    return {x: x, y: y};
+}
+export {randomCoordinates, returnRandomCoordinates}

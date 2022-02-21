@@ -2,7 +2,7 @@
 import {updateBoard, clearCells} from "./help-functions";
 
 import {enemyBoard, firstGameBoard} from "./index";
-import {randomCoordinates} from "./AI";
+import {returnRandomCoordinates} from "./AI";
 
 const gameBoardContainer = document.getElementById("game-board");
 const enemyGameBoardContainer = document.getElementById("enemy-game-board");
@@ -30,6 +30,9 @@ enemyGameBoardContainer.addEventListener('click', (e) => {
 
 		enemyBoard.recieveAttack({x: x, y: y});
 		updateBoard(enemyGameBoardContainer, enemyBoard.board, 'enemy-board');
+
+		firstGameBoard.recieveAttack(returnRandomCoordinates());
+		updateBoard(gameBoardContainer, firstGameBoard.board, 'my-board');
 	}
 })
 
