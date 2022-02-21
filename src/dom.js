@@ -20,6 +20,8 @@ const displayBoard = (board, container, uniqueClass) => {
 				oneCell.style.background = 'red';
 			} else if (board[i][j] === 3) {
 				oneCell.style.background = 'lightgreen';
+			} else {
+				oneCell.style.background = 'white';
 			}
 
 			container.appendChild(oneCell);
@@ -29,7 +31,7 @@ const displayBoard = (board, container, uniqueClass) => {
 
 // adding event listeners to all cells using Event Delegation
 enemyGameBoardContainer.addEventListener('click', (e) => {
-	if (e.target && e.target.nodeName === 'DIV' && !(e.target.classList.contains('clicked'))) {
+	if (e.target && e.target.nodeName === 'DIV' && (e.target.style.background === 'white' || e.target.style.background === 'lightblue')) {
 		let x = Math.floor(e.target.id / 10);
 		let y = e.target.id % 10;
 
