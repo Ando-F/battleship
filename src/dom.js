@@ -1,6 +1,7 @@
 import {updateBoard} from "./help-functions";
 import {enemyBoard, firstGameBoard} from "./index";
 import {returnRandomCoordinates} from "./AI";
+import {Ship} from "./Ship";
 
 const gameBoardContainer = document.getElementById("game-board");
 const enemyGameBoardContainer = document.getElementById("enemy-game-board");
@@ -40,8 +41,26 @@ enemyGameBoardContainer.addEventListener('click', (e) => {
 
 		firstGameBoard.recieveAttack(returnRandomCoordinates());
 		updateBoard(gameBoardContainer, firstGameBoard.board, 'my-board');
+
+		if (checkStatus(enemyBoard.ships) === true) {
+			console.log('You win');
+		} else if (checkStatus(firstGameBoard.ships) === true) {
+			console.log('You lose');
+		}
 	}
 })
+
+const checkStatus = (array) => {
+	let sunkFinalStatus = false;
+	for (let i = 0; i < array.length; i++) {
+		sunkFinalStatus = true;
+		if (array[i].sunkStatus.value === false) {
+			sunkFinalStatus = false;
+			break;
+		}
+	}
+	return sunkFinalStatus;
+}
 
 export {
 	displayBoard,
