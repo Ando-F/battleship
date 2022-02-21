@@ -33,8 +33,6 @@ enemyGameBoardContainer.addEventListener('click', (e) => {
 		let x = Math.floor(e.target.id / 10);
 		let y = e.target.id % 10;
 
-		e.target.classList.add('clicked');
-
 		enemyBoard.recieveAttack({x: x, y: y});
 		updateBoard(enemyGameBoardContainer, enemyBoard.board, 'enemy-board');
 

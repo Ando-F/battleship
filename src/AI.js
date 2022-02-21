@@ -18,7 +18,6 @@ const returnRandomCoordinates = () => {
     let x = Math.floor(randomCoordinates[0] / 10);
     let y = randomCoordinates[0] % 10;
     randomCoordinates.shift();
-    console.log({x: x, y: y});
     return {x: x, y: y};
 }
 export {randomCoordinates, returnRandomCoordinates}
