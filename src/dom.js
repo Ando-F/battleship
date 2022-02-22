@@ -50,6 +50,39 @@ enemyGameBoardContainer.addEventListener('click', (e) => {
 	}
 })
 
+// amount of all ships we placed
+let four = 0;
+let three = 0;
+let two = 0;
+let one = 0;
+
+// allowing ship placement by clicking cells
+gameBoardContainer.addEventListener('click', (e) => {
+	const placeShipOnClick = (length) => {
+		let x = Math.floor(e.target.id / 10);
+		let y = e.target.id % 10;
+
+		//placing ships on my board
+		const axisValue = document.getElementById('axis-value').innerHTML;
+		firstGameBoard.placeShip(length, {value: axisValue}, {x: x, y: y});
+		updateBoard(gameBoardContainer, firstGameBoard.board, 'my-board');
+	}
+
+	if (e.target && e.target.nodeName === 'DIV' && four < 1) {
+		placeShipOnClick(4);
+		four++;
+	} else if (e.target && e.target.nodeName === 'DIV' && three < 2){
+		placeShipOnClick(3);
+		three++;
+	} else if (e.target && e.target.nodeName === 'DIV' && two < 3) {
+		placeShipOnClick(2);
+		two++;
+	} else if (e.target && e.target.nodeName === 'DIV' && one < 4) {
+		placeShipOnClick(1);
+		one++;
+	}
+})
+
 const checkStatus = (array) => {
 	let sunkFinalStatus = false;
 	for (let i = 0; i < array.length; i++) {
