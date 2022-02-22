@@ -67,3 +67,23 @@ body {
 #axis-name {
     margin-right: 15px;
 }
+
+/*Styling pop up window*/
+.pop-up {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 50%;
+    margin: auto;
+
+    border: 1px solid;
+    width: 90%;
+    height: 80%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: white;
+}

@@ -43,9 +43,9 @@ enemyGameBoardContainer.addEventListener('click', (e) => {
 		updateBoard(gameBoardContainer, firstGameBoard.board, 'my-board');
 
 		if (checkStatus(enemyBoard.ships) === true) {
-			console.log('You win');
+			createPopUp('You Win');
 		} else if (checkStatus(firstGameBoard.ships) === true) {
-			console.log('You lose');
+			createPopUp('You Lose');
 		}
 	}
 })
@@ -60,6 +60,13 @@ const checkStatus = (array) => {
 		}
 	}
 	return sunkFinalStatus;
+}
+
+const createPopUp = (message) => {
+	const messageWindow = document.createElement('div');
+	messageWindow.classList.add('pop-up');
+	messageWindow.innerHTML = message;
+	document.querySelector('body').appendChild(messageWindow);
 }
 
 export {
