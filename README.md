@@ -8,3 +8,5 @@ Although the game is working, it is not 100% ready – there are several feature
 - And, yeah, you can see enemy’s ships – i left them be for better testing and understanding how the game works.
 
 I completed it all by myself using The Odin Project checklist. You can check it out by link: https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/battleship
+
+GitHub Pages: https://matveisch.github.io/battleship/
